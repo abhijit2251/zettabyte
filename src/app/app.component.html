@@ -1,0 +1,32 @@
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+<div class="userAblumCls">
+  <div *ngIf="!show">
+    <h2>List of Users</h2>
+    <li *ngFor="let users of userAry">
+      <span (click)="onClickUser(users.id)">{{users.id}} {{users.name}}</span>
+    </li>
+  </div>
+
+  <div *ngIf="show">
+    <div *ngIf="!showPhotos">
+      <h2>list of Albums</h2>
+      <li *ngFor="let album of tempAlbumAry; let i=index">
+        <span (click)="onClickAlbum(album.id)">{{album.id}} {{album.title}}</span>
+      </li>
+      <button (click)="onBackClickAlbum()">Back</button>
+    </div>
+  </div>
+
+  <div *ngIf="showPhotos">
+    <div></div>
+    <h2>List Of Photos</h2>
+    <div *ngFor="let photos of tempPhotoAry">
+      <img src="{{ photos.url }}">
+    </div>
+    <button (click)="onBackClickPhoto()">Back</button>
+  </div>
+</div>
